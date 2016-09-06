@@ -7,9 +7,14 @@ language: java
 jdk:
   - oraclejdk8
 
+cache:
+  directories:
+  - $HOME/.m2
+  - $HOME/.sbt
+
 script:
   - ./bin/activator clean test && ./bin/activator stage
-  - docker built -t iannickb/play-java-seed .
+  - docker build -t iannickb/play-java-seed .
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
