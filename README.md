@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/iannickb/play-java-seed.svg?branch=master)](https://travis-ci.org/iannickb/play-java-seed)
+[![codecov](https://codecov.io/gh/iannickb/play-java-seed/branch/master/graph/badge.svg)](https://codecov.io/gh/iannickb/play-java-seed)
 
 This is your new Play application
 =================================
