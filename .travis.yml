@@ -13,10 +13,11 @@ cache:
   - $HOME/.sbt
 
 script:
-  - ./bin/activator clean test && ./bin/activator stage
+  - ./bin/activator clean coverage coverageReport stage
   - docker build -t iannickb/play-java-seed .
 
 after_success:
+  - bash <(curl -s https://codecov.io/bash)
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USER" -p="$DOCKER_PASS";
     docker push iannickb/play-java-seed;
