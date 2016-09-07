@@ -14,7 +14,8 @@ cache:
   - $HOME/.ivy2
 
 script:
-  - ./bin/activator clean coverage test coverageReport stage
+  - ./bin/activator clean coverage test coverageReport
+  - ./bin/activator stage
   - docker build -t iannickb/play-java-seed .
 
 after_success:
