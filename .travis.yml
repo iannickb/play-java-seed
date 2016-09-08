@@ -24,6 +24,6 @@ after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker push iannickb/play-java-seed:latest;
     fi
-  - if [ -z $TRAVIS_TAG ]; then
+  - if [ -n "$TRAVIS_TAG" ]; then
     docker tag iannickb/play-java-seed:latest iannickb/play-java-seed:${TRAVIS_TAG:1};
     fi
