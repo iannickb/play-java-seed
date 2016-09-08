@@ -1,5 +1,7 @@
 package controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.mvc.*;
 
 import views.html.*;
@@ -10,6 +12,8 @@ import views.html.*;
  */
 public class HomeController extends Controller {
 
+    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
     /**
      * An action that renders an HTML page with a welcome message.
      * The configuration in the <code>routes</code> file means that
@@ -17,7 +21,15 @@ public class HomeController extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
     public Result index() {
-        return ok(index.render("Your new application is ready."));
+        String hostname = System.getenv("HOSTNAME");
+
+        if (hostname == null) {
+            hostname = "<unknown>";
+        }
+
+        logger.info("Called index from {}", hostname);
+
+        return ok(index.render("Your new application is ready. [" + hostname + "]"));
     }
 
 }
