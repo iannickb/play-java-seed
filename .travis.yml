@@ -14,12 +14,11 @@ cache:
   - $HOME/.ivy2
 
 script:
-  - ./bin/activator clean coverage test coverageReport
-  - ./bin/activator stage
-  - docker build -t iannickb/play-java-seed .
+  - ./bin/activator clean coverage test coverageReport && ./bin/activator stage
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  - docker build -t iannickb/play-java-seed .
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USER" -p="$DOCKER_PASS"
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker push iannickb/play-java-seed:latest;
