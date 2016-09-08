@@ -29,7 +29,7 @@ public class HomeController extends Controller {
 
         logger.info("Called index from {}", hostname);
 
-        return ok(index.render("Your new application is ready. [" + hostname + "]"));
+        return ok(index.render("Your beautiful application is ready. [" + hostname + "]"));
     }
 
 }
